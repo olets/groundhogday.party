@@ -1,0 +1,124 @@
+<!doctype html>
+<html class="antialiased scroll-smooth" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Modak&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          backgroundImage: {
+            'groundhog': "url('https://cdn.pixabay.com/photo/2021/08/12/17/41/groundhog-6541351_1280.jpg')",
+          },
+          fontFamily: {
+            sans: [
+                'UnifrakturCook',
+                'Montserrat',
+                '-apple-system',
+                'BlinkMacSystemFont',
+                '"Segoe UI"',
+                'Roboto',
+                '"Helvetica Neue"',
+                'Arial',
+                '"Noto Sans"',
+                'sans-serif',
+                '"Apple Color Emoji"',
+                '"Segoe UI Emoji"',
+                '"Segoe UI Symbol"',
+                '"Noto Color Emoji"',
+            ],
+            serif: [
+                'Modak',
+                'Alegreya',
+                'Georgia',
+                'Cambria',
+                '"Times New Roman"',
+                'Times',
+                'serif',
+            ],
+          }
+        }
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer base {
+      em {
+        font-style: normal;
+        @apply font-serif;
+      }
+    }
+    @layer components {
+      .groundhog {
+        @apply absolute bg-center bg-contain bg-groundhog inset-10 sm:inset-12 md:inset-20 lg:inset-24 xl:inset-32 p-5 sm:p-10 md:p-20 lg:p-32 xl:p-40;
+      }
+    }
+  </style>
+  <title>ghd</title>
+</head>
+
+<body class="bg-groundhog bg-center">
+  <header class="min-h-screen relative">
+    <div class="groundhog">
+      <div class="groundhog">
+        <div class="groundhog">
+          <div class="groundhog">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute flex inset-0 items-center justify-center text-center">
+      <a class="group" href="#content">
+        <span class="bg-black flex group-focus:opacity-100 group-hover:opacity-100 h-40 items-center justify-center opacity-70 rounded-full text-white transition-opacity w-40">
+          <span class="group-focus:animate-ping group-hover:animate-ping text-5xl">&#9759;</span>
+        </span>
+      </a>
+    </div>
+  </header>
+
+  <main class="flex flex-col font-sans lg:text-5xl max-w-4xl md:text-4xl pt-24 mx-auto sm:text-3xl text-2xl" id="content">
+    <div class="leading-relaxed p-10 relative text-white">
+      <div class="absolute bg-black inset-0 opacity-70"></div>
+
+      <div class="relative">
+        Say a prayer for <em>Groundhog Day</em>.
+        <br>
+        It is nearly here and so we pray
+        <br>
+        for a swift delivery of the <em>Day</em>.
+        <br>
+        Say a prayer for <em>Groundhog Day</em>.
+        <br>
+        It is to<em>Day</em>. and so we pray
+        <br>
+        for swift deliverance from the <em>Day</em>.
+        <br>
+        When will it arrive? When will it go?
+        <br>
+        Come to us. Please let me be.
+        <br>
+        It's so:
+        <br>The <em>Groundhog</em> is prepared to rise
+        <br>
+        <span class="underline">Watcher</span> stands in growing crowd
+        <br>
+        <span class="underline">Insurer</span> hawks, laughs aloud
+        <br>
+        <span class="underline">Weatherman</span> gives up and flies
+        <br>
+        <span class="underline">Buyer</span> twists, always wise.
+        <br>
+        <em>Days</em> ago the <em>Groundhog</em> rose
+        <br>
+        Watch your step, Broccoltoes.
+      </div>
+    </div>
+  </main>
+
+  <footer class="p-20">&copy; 2022-present Henry Bley-Vroman</footer>
+</body>

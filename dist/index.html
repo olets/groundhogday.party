@@ -62,7 +62,7 @@
 </head>
 
 <body class="bg-groundhog bg-center">
-  <header class="min-h-screen relative">
+  <header class="flex items-center justify-center min-h-screen relative">
     <div class="groundhog">
       <div class="groundhog">
         <div class="groundhog">
@@ -72,14 +72,14 @@
       </div>
     </div>
 
-    <div class="absolute flex inset-0 items-center justify-center text-center">
-      <a class="group" href="#groundhogday.party">
+    <div class="h-40  relative w-40">
+      <a class="absolute group hidden inset-0 md:block peer" href="#groundhogday.party">
         <span class="sr-only">Scroll to content</span>
-
-        <span class="bg-black flex group-focus:opacity-100 group-hover:opacity-100 h-40 items-center justify-center opacity-70 rounded-full text-white transition-opacity w-40">
-          <span class="motion-safe:animate-ping text-5xl">&#9759;</span>
-        </span>
       </a>
+
+      <div class="flex items-center justify-center pointer-events-none bg-black flex h-full peer-focus:opacity-100 peer-hover:opacity-100 md:opacity-70 rounded-full text-white transition-opacity w-full">
+        <span class="motion-safe:animate-ping text-5xl">&#9759;</span>
+      </div>
     </div>
   </header>
 

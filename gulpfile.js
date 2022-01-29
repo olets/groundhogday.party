@@ -1,31 +1,62 @@
-const path = require("path");
+const autoprefixer = require('autoprefixer');
+const browserSync = require('browser-sync').create();
 const del = require("del");
 const htmlmin = require('gulp-htmlmin');
-const twing = require("gulp-twing");
-const { dest, parallel, series, src } = require("gulp");
-const { TwingEnvironment, TwingLoaderRelativeFilesystem } = require("twing");
+const postcss = require('gulp-postcss');
+const tailwindcss = require('tailwindcss');
+const twig = require("gulp-twig");
+const { dest, lastRun, parallel, series, src, watch: gulpWatch } = require("gulp");
 
-const env = new TwingEnvironment(new TwingLoaderRelativeFilesystem());
-
-const twigBase = path.join(__dirname, "/src/pages");
+const twigBase = "src/pages";
+const cssPath = "src/styles/styles.css";
 
 const config = {
-  distPath: path.join(__dirname, "./dist/"),
-  twigSrc: `${twigBase}/**/[^_]*.twig`,
-  staticSrc: [path.join(__dirname, "./src/**/*"), `!${twigBase}`, `!${twigBase}/**/*`],
+  cssSrc: cssPath,
+  distPath: "dist/",
+  viewSrc: `${twigBase}/**/[^_]*.twig`,
+  staticSrc: [
+    "src/**/*",
+    "!" + cssPath,
+    "!" + `${twigBase}{/**/*,}`,
+  ],
 };
 
 function clean() {
   return del(config.distPath);
 }
 
-function static() {
-  return src(config.staticSrc).pipe(dest(config.distPath));
+function styles() {
+  return src(config.cssSrc)
+    .pipe(postcss([
+      tailwindcss(),
+      autoprefixer(),
+    ]))
+    .pipe(dest(config.distPath))
 }
 
-function twig() {
-  return src(config.twigSrc)
-    .pipe(twing(env, {}, { outputExt: "" }))
+function reload(done) {
+  browserSync.reload();
+  done();
+}
+
+function serve(done) {
+  browserSync.init({
+    server: { baseDir: "./dist" }
+  });
+
+  done();
+}
+
+function static() {
+  return src(config.staticSrc, { since: lastRun(static) })
+    .pipe(dest(config.distPath));
+}
+
+function views() {
+  return src(config.viewSrc)
+    .pipe(twig({
+      extname: '',
+    }))
     .pipe(htmlmin({
       collapseWhitespace: true,
       conservativeCollapse: true,
@@ -35,5 +66,30 @@ function twig() {
     .pipe(dest(config.distPath));
 }
 
+function watch(done) {
+  gulpWatch(config.viewSrc, series(parallel(styles, views), reload));
+  gulpWatch(config.staticSrc, series(static, reload));
+  gulpWatch(config.cssSrc, series(styles, reload));
+  
+  done();
+}
+
+/**
+ * Simple exports
+ */
+
 exports.clean = clean;
-exports.build = series(clean, parallel(static, twig));
+exports.styles = styles;
+exports.views = views;
+
+/**
+ * Compound exports
+ */
+
+function build(done) {
+  series(clean, parallel(styles, static, views));
+  done();
+}
+
+exports.build = build;
+exports.dev = series(build, serve, watch);

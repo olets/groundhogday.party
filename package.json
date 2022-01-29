@@ -5,23 +5,20 @@
   "main": "index.js",
   "devDependencies": {
     "autoprefixer": "^10.4.2",
+    "browser-sync": "^2.27.7",
     "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-htmlmin": "^5.0.1",
-    "gulp-twing": "^4.0.0",
+    "gulp-postcss": "^9.0.1",
+    "gulp-twig": "^1.2.0",
     "postcss": "^8.4.5",
-    "tailwindcss": "^3.0.18",
-    "twing": "^5.1.0"
+    "tailwindcss": "^3.0.18"
   },
   "scripts": {
-    "ci": "npm run ci:build && npm run ci:styles",
-    "ci:build": "npx gulp build",
-    "ci:clean": "npx gulp clean",
-    "ci:styles": "npx tailwindcss -i ./src/styles/input.css -o ./dist/output.css --minify",
-    "dev": "pnpm dev:build && pnpm dev:styles",
-    "dev:build": "pnpm gulp build",
-    "dev:clean": "pnpm gulp clean",
-    "dev:styles": "npx tailwindcss -i ./src/styles/input.css -o ./dist/output.css --watch"
+    "build": "if [[ $CI ]]; then npx gulp build; else pnpm gulp build; fi",
+    "dev": "pnpm gulp dev",
+    "styles": "pnpm gulp styles",
+    "view": "pnpm gulp view"
   },
   "repository": {
     "type": "git",

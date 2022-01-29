@@ -1,0 +1,22 @@
+{
+  "name": "groundhogday.party",
+  "description": "Source for groundhogday.party",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-twing": "^4.0.0",
+    "twing": "^5.1.0"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olets/groundhogday.party.git"
+  },
+  "author": "Henry Bley-Vroman <olets@olets.dev>",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/olets/groundhogday.party/issues"
+  },
+  "homepage": "https://github.com/olets/groundhogday.party#readme"
+}

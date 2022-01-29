@@ -6,6 +6,7 @@
   "devDependencies": {
     "del": "^6.0.0",
     "gulp": "^4.0.2",
+    "gulp-htmlmin": "^5.0.1",
     "gulp-twing": "^4.0.0",
     "twing": "^5.1.0"
   },

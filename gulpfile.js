@@ -1,5 +1,6 @@
 const path = require("path");
 const del = require("del");
+const htmlmin = require('gulp-htmlmin');
 const twing = require("gulp-twing");
 const { dest, parallel, series, src } = require("gulp");
 const { TwingEnvironment, TwingLoaderRelativeFilesystem } = require("twing");
@@ -25,6 +26,12 @@ function static() {
 function twig() {
   return src(config.twigSrc)
     .pipe(twing(env, {}, { outputExt: "" }))
+    .pipe(htmlmin({
+      collapseWhitespace: true,
+      conservativeCollapse: true,
+      minifyCSS: true,
+      minifyJS: true, 
+    }))
     .pipe(dest(config.distPath));
 }
 

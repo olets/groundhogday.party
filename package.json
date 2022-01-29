@@ -4,11 +4,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {
+    "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-twing": "^4.0.0",
     "twing": "^5.1.0"
   },
-  "scripts": {},
+  "scripts": {
+    "ci:build": "[[ $CI ]] && npx gulp build",
+    "ci:clean": "[[ $CI ]] && npx gulp clean",
+    "dev:build": "pnpm gulp build",
+    "dev:clean": "pnpm gulp clean"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/olets/groundhogday.party.git"

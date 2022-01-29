@@ -4,17 +4,24 @@
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {
+    "autoprefixer": "^10.4.2",
     "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-htmlmin": "^5.0.1",
     "gulp-twing": "^4.0.0",
+    "postcss": "^8.4.5",
+    "tailwindcss": "^3.0.18",
     "twing": "^5.1.0"
   },
   "scripts": {
-    "ci:build": "[[ $CI ]] && npx gulp build",
-    "ci:clean": "[[ $CI ]] && npx gulp clean",
+    "ci": "npm run ci:build && npm run ci:styles",
+    "ci:build": "npx gulp build",
+    "ci:clean": "npx gulp clean",
+    "ci:styles": "npx tailwindcss -i ./src/styles/input.css -o ./dist/output.css --minify",
+    "dev": "pnpm dev:build && pnpm dev:styles",
     "dev:build": "pnpm gulp build",
-    "dev:clean": "pnpm gulp clean"
+    "dev:clean": "pnpm gulp clean",
+    "dev:styles": "npx tailwindcss -i ./src/styles/input.css -o ./dist/output.css --watch"
   },
   "repository": {
     "type": "git",

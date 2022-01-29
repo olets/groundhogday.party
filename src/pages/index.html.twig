@@ -10,61 +10,10 @@
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="theme-color" content="#ffffff">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/output.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Modak&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          backgroundImage: {
-            'groundhog': "url('https://olets.github.io/assets/images/groundhogs-facing.jpg')",
-          },
-          fontFamily: {
-            sans: [
-                'UnifrakturCook',
-                'Montserrat',
-                '-apple-system',
-                'BlinkMacSystemFont',
-                '"Segoe UI"',
-                'Roboto',
-                '"Helvetica Neue"',
-                'Arial',
-                '"Noto Sans"',
-                'sans-serif',
-                '"Apple Color Emoji"',
-                '"Segoe UI Emoji"',
-                '"Segoe UI Symbol"',
-                '"Noto Color Emoji"',
-            ],
-            serif: [
-                'Modak',
-                'Alegreya',
-                'Georgia',
-                'Cambria',
-                '"Times New Roman"',
-                'Times',
-                'serif',
-            ],
-          }
-        }
-      }
-    }
-  </script>
-  <style type="text/tailwindcss">
-    @layer base {
-      em {
-        font-style: normal;
-        @apply font-serif;
-      }
-    }
-    @layer components {
-      .groundhog {
-        @apply absolute bg-center bg-contain bg-groundhog inset-10 sm:inset-12 md:inset-20 lg:inset-24 xl:inset-32 p-5 sm:p-10 md:p-20 lg:p-32 xl:p-40;
-      }
-    }
-  </style>
   <title>Grunnhogasterdagr Partire</title>
 </head>
 

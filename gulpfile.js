@@ -19,6 +19,7 @@ const config = {
   viewsGlobs: `${viewsRoot}/**/[^_]*.twig`,
   staticGlobs: [
     "src/**/*",
+    `!src/fonts{,/**/*}`,
     `!${stylesRoot}{,/**/*}`,
     `!${viewsRoot}{,/**/*}`,
   ],
@@ -35,7 +36,7 @@ function reload(done) {
 
 function serve(done) {
   browserSync.init({
-    server: { baseDir: "./dist" }
+    server: { baseDir: distFolder }
   });
 
   done();
@@ -80,8 +81,6 @@ function watch(done) {
  */
 
 exports.clean = clean;
-exports.styles = styles;
-exports.views = views;
 
 /**
  * Multi-task exports

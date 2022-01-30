@@ -11,10 +11,10 @@ const viewsRoot = "src/views";
 const stylesRoot = "src/styles";
 
 const config = {
-  stylesSrc: `${stylesRoot}/styles.css`,
-  distPath: "dist/",
-  viewsSrc: `${viewsRoot}/**/[^_]*.twig`,
-  staticSrc: [
+  stylesGlobs: `${stylesRoot}/styles.css`,
+  distFolder: "dist/",
+  viewsGlobs: `${viewsRoot}/**/[^_]*.twig`,
+  staticGlobs: [
     "src/**/*",
     `!${stylesRoot}{,/**/*}`,
     `!${viewsRoot}{,/**/*}`,
@@ -22,16 +22,16 @@ const config = {
 };
 
 function clean() {
-  return del(config.distPath);
+  return del(config.distFolder);
 }
 
 function styles() {
-  return src(config.stylesSrc)
+  return src(config.stylesGlobs)
     .pipe(postcss([
       tailwindcss(),
       autoprefixer(),
     ]))
-    .pipe(dest(config.distPath))
+    .pipe(dest(config.distFolder))
 }
 
 function reload(done) {
@@ -48,28 +48,26 @@ function serve(done) {
 }
 
 function static() {
-  return src(config.staticSrc, { since: lastRun(static) })
-    .pipe(dest(config.distPath));
+  return src(config.staticGlobs, { since: lastRun(static) })
+    .pipe(dest(config.distFolder));
 }
 
 function views() {
-  return src(config.viewsSrc)
-    .pipe(twig({
-      extname: '',
-    }))
+  return src(config.viewsGlobs)
+    .pipe(twig({ extname: '' }))
     .pipe(htmlmin({
       collapseWhitespace: true,
       conservativeCollapse: true,
       minifyCSS: true,
       minifyJS: true, 
     }))
-    .pipe(dest(config.distPath));
+    .pipe(dest(config.distFolder));
 }
 
 function watch(done) {
-  gulpWatch(config.viewsSrc, series(parallel(styles, views), reload));
-  gulpWatch(config.staticSrc, series(static, reload));
-  gulpWatch(config.stylesSrc, series(styles, reload));
+  gulpWatch(config.viewsGlobs, series(parallel(styles, views), reload));
+  gulpWatch(config.staticGlobs, series(static, reload));
+  gulpWatch(config.stylesGlobs, series(styles, reload));
   
   done();
 }

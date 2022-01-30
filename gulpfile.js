@@ -9,9 +9,11 @@ const { dest, lastRun, parallel, series, src, watch: gulpWatch } = require("gulp
 
 const viewsRoot = "src/views";
 const stylesRoot = "src/styles";
+const stylesSrcGlobs = `${stylesRoot}/styles.css`;
 
 const config = {
-  stylesGlobs: `${stylesRoot}/styles.css`,
+  stylesSrcGlobs: stylesSrcGlobs,
+  stylesWatchGlobs: [stylesSrcGlobs, "tailwind.config.js"],
   distFolder: "dist/",
   viewsGlobs: `${viewsRoot}/**/[^_]*.twig`,
   staticGlobs: [
@@ -23,15 +25,6 @@ const config = {
 
 function clean() {
   return del(config.distFolder);
-}
-
-function styles() {
-  return src(config.stylesGlobs)
-    .pipe(postcss([
-      tailwindcss(),
-      autoprefixer(),
-    ]))
-    .pipe(dest(config.distFolder))
 }
 
 function reload(done) {
@@ -52,6 +45,15 @@ function static() {
     .pipe(dest(config.distFolder));
 }
 
+function styles() {
+  return src(config.stylesSrcGlobs)
+    .pipe(postcss([
+      tailwindcss(),
+      autoprefixer(),
+    ]))
+    .pipe(dest(config.distFolder))
+}
+
 function views() {
   return src(config.viewsGlobs)
     .pipe(twig({ extname: '' }))
@@ -67,7 +69,7 @@ function views() {
 function watch(done) {
   gulpWatch(config.viewsGlobs, series(parallel(styles, views), reload));
   gulpWatch(config.staticGlobs, series(static, reload));
-  gulpWatch(config.stylesGlobs, series(styles, reload));
+  gulpWatch(config.stylesWatchGlobs, series(styles, reload));
   
   done();
 }

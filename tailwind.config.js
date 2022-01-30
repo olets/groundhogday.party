@@ -1,5 +1,5 @@
 module.exports = {
-  content: ['./src/pages/**/*.html.twig'],
+  content: ['./src/views/**/*.html.twig'],
   theme: {
     extend: {
       backgroundImage: {

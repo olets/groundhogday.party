@@ -7,8 +7,8 @@ const tailwindcss = require('tailwindcss');
 const twig = require("gulp-twig");
 const { dest, lastRun, parallel, series, src, watch: gulpWatch } = require("gulp");
 
-const twigBase = "src/pages";
 const cssPath = "src/styles/styles.css";
+const viewsRoot = "src/views";
 
 const config = {
   cssSrc: cssPath,
@@ -17,7 +17,7 @@ const config = {
   staticSrc: [
     "src/**/*",
     "!" + cssPath,
-    "!" + `${twigBase}{/**/*,}`,
+    "!" + viewsRoot,
   ],
 };
 
@@ -53,7 +53,7 @@ function static() {
 }
 
 function views() {
-  return src(config.viewSrc)
+  return src(config.viewsSrc)
     .pipe(twig({
       extname: '',
     }))
@@ -67,7 +67,7 @@ function views() {
 }
 
 function watch(done) {
-  gulpWatch(config.viewSrc, series(parallel(styles, views), reload));
+  gulpWatch(config.viewsSrc, series(parallel(styles, views), reload));
   gulpWatch(config.staticSrc, series(static, reload));
   gulpWatch(config.cssSrc, series(styles, reload));
   

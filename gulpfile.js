@@ -86,10 +86,7 @@ exports.views = views;
  * Multi-task exports
  */
 
-function build(done) {
-  series(clean, parallel(styles, static, views));
-  done();
-}
+const build = series(clean, parallel(styles, static, views));
 
 exports.build = build;
 exports.dev = series(build, serve, watch);

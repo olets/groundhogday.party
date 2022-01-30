@@ -14,3 +14,13 @@
     @apply absolute bg-center bg-contain bg-groundhog inset-10 sm:inset-12 md:inset-20 lg:inset-24 xl:inset-32 p-5 sm:p-10 md:p-20 lg:p-32 xl:p-40;
   }
 }
+
+@font-face {
+  font-family: "Modak";
+  src: url(Modak-Regular-subset.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "UnifrakturCook";
+  src: url(UnifrakturCook-Bold-subset.woff2) format("woff2");
+}

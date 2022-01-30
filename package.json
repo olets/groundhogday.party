@@ -15,7 +15,7 @@
     "tailwindcss": "^3.0.18"
   },
   "scripts": {
-    "build": "if [[ $CI ]]; then npx gulp build; else pnpm gulp build; fi",
+    "build": "pnpm gulp build",
     "dev": "pnpm gulp dev",
     "styles": "pnpm gulp styles",
     "view": "pnpm gulp view"

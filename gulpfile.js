@@ -7,17 +7,17 @@ const tailwindcss = require('tailwindcss');
 const twig = require("gulp-twig");
 const { dest, lastRun, parallel, series, src, watch: gulpWatch } = require("gulp");
 
-const cssPath = "src/styles/styles.css";
 const viewsRoot = "src/views";
+const stylesRoot = "src/styles";
 
 const config = {
-  cssSrc: cssPath,
+  stylesSrc: `${stylesRoot}/styles.css`,
   distPath: "dist/",
-  viewSrc: `${twigBase}/**/[^_]*.twig`,
+  viewsSrc: `${viewsRoot}/**/[^_]*.twig`,
   staticSrc: [
     "src/**/*",
-    "!" + cssPath,
-    "!" + viewsRoot,
+    `!${stylesRoot}{,/**/*}`,
+    `!${viewsRoot}{,/**/*}`,
   ],
 };
 
@@ -26,7 +26,7 @@ function clean() {
 }
 
 function styles() {
-  return src(config.cssSrc)
+  return src(config.stylesSrc)
     .pipe(postcss([
       tailwindcss(),
       autoprefixer(),
@@ -69,13 +69,13 @@ function views() {
 function watch(done) {
   gulpWatch(config.viewsSrc, series(parallel(styles, views), reload));
   gulpWatch(config.staticSrc, series(static, reload));
-  gulpWatch(config.cssSrc, series(styles, reload));
+  gulpWatch(config.stylesSrc, series(styles, reload));
   
   done();
 }
 
 /**
- * Simple exports
+ * Single-task exports
  */
 
 exports.clean = clean;
@@ -83,7 +83,7 @@ exports.styles = styles;
 exports.views = views;
 
 /**
- * Compound exports
+ * Multi-task exports
  */
 
 function build(done) {

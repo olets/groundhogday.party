@@ -8,21 +8,14 @@ const twig = require("gulp-twig");
 const { dest, lastRun, parallel, series, src, watch: gulpWatch } = require("gulp");
 
 const distFolder = "dist"
-const stylesRoot = "src/styles";
-const stylesSrcGlobs = `${stylesRoot}/styles.css`;
-const viewsRoot = "src/views";
+const stylesSrcGlobs = "src/styles/styles.css";
 
 const config = {
   cleanGlobs: [`${distFolder}/**/*`, `!${distFolder}/.gitkeep`],
   stylesSrcGlobs: stylesSrcGlobs,
   stylesWatchGlobs: [stylesSrcGlobs, "tailwind.config.js"],
-  viewsGlobs: `${viewsRoot}/**/[^_]*.twig`,
-  staticGlobs: [
-    "src/**/*",
-    `!src/fonts{,/**/*}`,
-    `!${stylesRoot}{,/**/*}`,
-    `!${viewsRoot}{,/**/*}`,
-  ],
+  viewsGlobs: "src/views/**/[^_]*.twig",
+  staticGlobs: "src/static/**/*",
 };
 
 function clean() {

@@ -13,8 +13,8 @@
 ## Dev
 
 - `pnpm install` to install dependencies
-- `pnpm start` to build and watch
-- `pnpm run build` to build
+- `pnpm dev` to build and watch
+- `pnpm build` to build
 
 
 ## License

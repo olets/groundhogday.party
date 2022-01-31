@@ -1,0 +1,10 @@
+[build]
+  command = """
+    npm install --global pnpm
+    pnpm install --store=node_modules/.pnpm-store
+    pnpm build
+    """
+  publish = "dist"
+
+[build.environment]
+  NPM_FLAGS = "--version"

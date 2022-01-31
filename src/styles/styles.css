@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  em {
+    font-style: normal;
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .groundhog {
+    @apply absolute bg-center bg-contain bg-groundhog inset-10 sm:inset-12 md:inset-20 lg:inset-24 xl:inset-32 p-5 sm:p-10 md:p-20 lg:p-32 xl:p-40;
+  }
+}

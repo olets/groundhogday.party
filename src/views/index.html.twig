@@ -1,0 +1,52 @@
+<!doctype html>
+<html class="antialiased scroll-smooth" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Modak&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+  <title>Grunnhogasterdagr Partire</title>
+</head>
+
+<body class="bg-groundhog bg-center">
+  <header class="flex items-center justify-center min-h-screen relative">
+    <h1 class="sr-only">Groundhog Day Party</h1>
+    
+    <div class="groundhog">
+      <div class="groundhog">
+        <div class="groundhog">
+          <div class="groundhog">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="h-40  relative w-40">
+      <a class="absolute group hidden inset-0 md:block peer" href="#groundhogday.party">
+        <span class="sr-only">Scroll to content</span>
+      </a>
+
+      <div class="flex items-center justify-center pointer-events-none bg-black flex h-full peer-focus:opacity-100 peer-hover:opacity-100 md:opacity-70 rounded-full text-white transition-opacity w-full">
+        <span class="motion-safe:animate-ping text-5xl">&#9759;</span>
+      </div>
+    </div>
+  </header>
+
+  <main
+    class="flex flex-col font-sans lg:text-5xl max-w-4xl md:text-4xl mx-auto p-5 pt-10 md:p-10 md:pt-24 sm:text-3xl text-xl"
+    id="groundhogday.party"
+  >
+    {% include '_poem.html.twig' %}
+  </main>
+
+  <footer class="bg-white/70 lg:p-20 md:p-15 mt-60 p-10">&copy; 2022-present Henry Bley-Vroman</footer>
+</body>

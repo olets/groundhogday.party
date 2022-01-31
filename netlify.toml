@@ -8,3 +8,4 @@
 
 [build.environment]
   NPM_FLAGS = "--version"
+  PYTHON_VERSION = "3.8"

@@ -1,0 +1,34 @@
+{% macro ImgixUrl(props = {}) -%}
+  {% set props = {
+    file: null,
+    config: null,
+  }|merge(props) -%}
+
+  https://olets.imgix.net/groundhogday.party/{{ props.file }}?{{ props.config|url_encode|replace({ "%3A": ":" }) -}}
+{% endmacro %}
+
+{% macro Image(props = {}) %}
+  {% set props = {
+    alt: null,
+    classes: null,
+    filename: null,
+    imgixConfig: null,
+  }|merge(props) %}
+
+  {% set src = _self.ImgixUrl({
+    file: props.filename,
+    config: props.imgixConfig,
+  }) %}
+
+  {% set fallbackSrc = _self.ImgixUrl({
+    file: "groundhogs-facing.jpg",
+    config: props.imgixConfig,
+  }) %}
+
+  <img
+    alt="{{ props.alt }}"
+    class="{{ props.classes }}"
+    src="{{ src }}"
+    onerror="this.onerror=null; this.src='{{ fallbackSrc }}'"
+  >
+{% endmacro %}

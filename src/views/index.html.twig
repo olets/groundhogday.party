@@ -1,3 +1,6 @@
+{% from "_Card.html.twig" import Card -%}
+{% from "_Header.html.twig" import Header -%}
+
 <!doctype html>
 <html class="antialiased scroll-smooth" lang="en">
 <head>
@@ -69,17 +72,113 @@
   </header>
 
   <main
-    class="flex flex-col font-sans lg:text-5xl max-w-4xl md:text-4xl mx-auto p-5 pt-10 md:p-10 md:pt-24 sm:text-3xl text-xl"
+    class="spacing flex flex-col font-sans lg:space-y-20 max-w-4xl md:p-10 md:pt-24 md:space-y-16 mx-auto p-5 pt-10"
     id="groundhogday.party"
   >
-    {% include '_poem.html.twig' %}
+    <section>
+      {{ Header({
+        copy: "Benediction",
+      }) }}
+
+      <div class="lg:text-5xl md:text-4xl sm:text-3xl text-xl">
+        {% include '_poem.html.twig' %}
+      </div>
+    </section>
+
+    <section>
+      {{ Header({
+        copy: "Arcana",
+      }) }}
+
+      {% set watcherCopy %}
+        The watcher stands in the thick of the crowd
+        <br>
+        dares speak to none but the <a href="#buyer"><em>buyer</em></a>
+        <br>
+        Waiting for the <a href="#weatherman"><em>weatherman</em></a>
+        <br>
+        to say the groundhog is a liar
+      {% endset %}
+
+      {% set insurerCopy %}
+        The insurer lives in the <a href="#buyer"><em>buyer</em></a>'s thrall
+        <br>
+        knows looping time ensnares them
+        <br>
+        Claims connection to the <a href="#weatherman"><em>weatherman</em></a>
+        <br>
+        &amp; hopes trickery will buy freedom
+      {% endset %}
+
+      {% set weathermanCopy %}
+        The weatherman, cruel to groundhog, <a href="#watcher"><em>watcher</em></a>, <a href="#insurer"><em>insurer</em></a>
+        <br>
+        to all he does not desire
+        <br>
+        Convinced his lot's unfair but deserves
+        <br>
+        the eternal torment of the <a href="#buyer"><em>buyer</em></a>
+      {% endset %}
+
+      {% set buyerCopy %}
+        The buyer traps a blameless town, <a href="#insurer"><em>insurer</em></a> forced
+        <br>
+        To find her new toys, <a href="#watcher"><em>watcher</em></a> forced
+        <br>
+        To never understand, <a href="#weatherman"><em>weatherman</em></a> falling
+        <br>
+        Right into her hands
+      {% endset %}
+
+      <div class="spacing">
+        {# {% include '_ice.html.twig' %} #}
+
+        {{ Card({
+          copy: watcherCopy,
+          heading: "Watcher",
+          id: "watcher",
+          imageFilename: "camera-operator.jpg",
+        })}}
+
+        {{ Card({
+          copy: insurerCopy,
+          heading: "Insurer",
+          id: "insurer",
+          imageFilename: "insurance-umbrella.jpg",
+        })}}
+
+        {{ Card({
+          copy: weathermanCopy,
+          heading: "Weatherman",
+          id: "weatherman",
+          imageFilename: "bendix-weatherman.jpg",
+        })}}
+
+        {{ Card({
+          copy: buyerCopy,
+          heading: "Buyer",
+          id: "buyer",
+          imageFilename: "death-and-the-dancer--crop.jpg",
+        })}}
+
+        {# {% include '_broccoltoe.html.twig' %} #}
+      </div>
+    </section>
   </main>
 
   <footer class="bg-white/70 lg:p-20 md:p-15 mt-60 p-10 text-lg">
     &copy; 2022-present Henry Bley-Vroman
 
+    <p>
+      <a href="https://www.lookandlearn.com/history-images/YW042204VEL/Death-points-an-arrow-at-a-female-dancer">Death points an arrow at a female dancer</a>, cropped,<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license.
+
+      <br>
+      
+      <a href="https://www.flickr.com/photos/x-ray_delta_one/5206149142">1957 ... weather central!</a>, cropped, <a href="https://creativecommons.org/licenses/by-nc-sa/2.0/">CC BY-NC-SA 2.0</a> license.
+    </p>
+
     <div class="flex gap-2 items-center">
-      Source: <a class="font-mono focus:under hover:underline text-blue-600 text-sm" href="https://github.com/olets/groundhogday.party">github.com/olets/groundhogday.party</a>
+      Source: <a class="font-mono text-sm" href="https://github.com/olets/groundhogday.party">github.com/olets/groundhogday.party</a>
     </div>
   </footer>
 </body>

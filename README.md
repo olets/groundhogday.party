@@ -16,7 +16,14 @@
 - `pnpm dev` to build and watch
 - `pnpm build` to build
 
+## Sources
 
+
+- "Death points an arrow at a female dancer" https://www.lookandlearn.com/history-images/YW042204VEL/Death-points-an-arrow-at-a-female-dancer [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+- Lilly, Denise. "Audio Visual Service" https://nara.getarchive.net/media/artwork-audio-visual-service-artist-denise-lilly-d45092 Public Domain
+- "Comic insurance company logo vector illustration
+" https://freesvg.org/comic-insurance-company-logo-vector-illustration Public Domain
+- https://www.flickr.com/photos/x-ray_delta_one/5206149142 [CC BY-NC-SA 2.0](https://creativecommons.org/licenses/by-nc-sa/2.0/)
 ## License
 
 <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" class="license-text"><a rel="cc:attributionURL" property="dct:title" href="https://www.github.com/olets/groundhogday.party">groundhogday.party</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.github.com/olets">Henry Bley-Vroman</a> is licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> plus <a href="https://firstdonoharm.dev/version/2/1/license.html">Hippocratic License 3</a>. Persons interested in using or adapting this work for commercial purposes should contact the author.</p>

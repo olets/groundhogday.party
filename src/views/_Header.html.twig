@@ -1,0 +1,9 @@
+{% macro Header(props = {}) %}
+  {% set props = {
+    copy: null,
+  }|merge(props) %}
+
+  <h2 class="mt-8 mb-4 text-center lg:text-6xl md:text-5xl sm:text-4xl text-2xl">
+    {{ props.copy }}
+  </h2>
+{% endmacro %}

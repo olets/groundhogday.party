@@ -10,10 +10,10 @@
 
   <article class="border border-black/70 part grid md:grid-cols-2" id="{{ props.id }}">
     {{ Image({
-      classes: "bg-white md:hidden rounded-t-lg w-full",
+      classes: "md:hidden rounded-t-lg w-full",
       filename: props.imageFilename,
       imgixConfig: {
-        ar: "10:8",
+        ar: "16:9",
         crop: "faces",
         "fill-color": "white",
         fit: "crop",
@@ -21,7 +21,7 @@
     })}}
 
     {{ Image({
-      classes: "bg-white hidden md:block rounded-l-lg w-full",
+      classes: "hidden md:block rounded-l-lg w-full",
       filename: props.imageFilename,
       imgixConfig: {
         ar: "8:10",

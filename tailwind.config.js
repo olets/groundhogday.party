@@ -2,6 +2,12 @@ module.exports = {
   content: ['./src/views/**/*.html.twig'],
   theme: {
     extend: {
+      animation: {
+        'confused-spin': 'confused-spin 10s linear infinite',
+        spin: 'spin 6s linear infinite',
+        'spin-double': 'spin 3s linear infinite',
+        'spin-triple': 'spin 2s linear infinite',
+      },
       backgroundImage: {
         'groundhog': "url('https://olets.github.io/assets/images/groundhogs-facing.jpg')",
       },
@@ -31,11 +37,36 @@ module.exports = {
             'Times',
             'serif',
         ],
-      }
-    }
+      },
+      keyframes: {
+        'confused-spin': {
+          '0%': {
+            transform: 'rotate(0deg)',
+          },
+          '10%': {
+            transform: 'rotate(40deg)',
+          },
+          '30%': {
+            transform: 'rotate(-60deg)',
+          },
+          '40%': {
+            transform: 'rotate(-20deg)',
+          },
+          '60%': {
+            transform: 'rotate(-90deg)',
+          },
+          '80%': {
+            transform: 'rotate(-45deg)',
+          },
+          '100%': {
+            transform: 'rotate(360deg)',
+          },
+        }
+      },
+    },
   },
   plugins: [
-    ({ addBase, addComponents }) => {
+    ({ addBase, addComponents, matchUtilities }) => {
       addBase({
         a: {
           '@apply decoration-orange-300 transition-colors underline focus:decoration-orange-500 focus:text-orange-500 hover:decoration-orange-500 hover:text-orange-500': {},
@@ -64,6 +95,22 @@ module.exports = {
           '@apply lg:space-y-20 md:space-y-16 space-y-10': {},
         },
       })
+
+      matchUtilities(
+        {
+          'animation-direction': (value) => ({
+            animationDirection: value,
+          }),
+        },
+        {
+          values: {
+            normal: 'normal',
+            reverse: 'reverse',
+            alternate: 'alternate',
+            alternateReverse: 'alternate-reverse',
+          },
+        },
+      );
     }
   ]
 }

@@ -52,7 +52,7 @@
     Skip to Content
   </a>
 
-  <header class="flex items-center justify-center min-h-screen relative">
+  <header class="flex flex-col items-center justify-center min-h-screen relative">
     <h1 class="sr-only">Groundhog Day Party</h1>
     
     <div class="groundhog motion-safe:animate-spin">
@@ -80,8 +80,21 @@
     id="groundhogday.party"
   >
     <section>
+      <nav class="md:px-10">
+        <ul class="bg-white/90 justify-center mx-auto p-10 rounded-lg border border-gray-500 shadow flex flex-wrap gap-[2rem]">
+          {% for question in ["welcome", "who", "what", "when", "where", "why", "how"] %}
+            <li>
+              <a class="text-xl md:text-3xl lg:text-5xl" href="#{{ question }}">{{ question|capitalize }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </section>
+
+    <section>
       {{ Header({
         copy: "Benediction",
+        id: "welcome",
       }) }}
 
       <div class="lg:text-5xl md:text-4xl sm:text-3xl text-xl">
@@ -92,44 +105,45 @@
     <section>
       {{ Header({
         copy: "Arcana",
+        id: "who",
       }) }}
 
       {% set watcherCopy %}
-        The watcher stands in the thick of the crowd
+        The watcher stands in the thick of the crowd,
         <br>
-        dares speak to none but the <a href="#buyer"><em>buyer</em></a>
+        dares speak to none but the <a href="#buyer"><em>buyer</em></a>.
         <br>
-        Waiting for the <a href="#weatherman"><em>weatherman</em></a>
+        Waiting for the <a href="#weatherman"><em>weatherman</em></a>,
         <br>
-        to say the groundhog is a liar
+        who’ll say the groundhog is a liar
       {% endset %}
 
       {% set insurerCopy %}
-        The insurer lives in the <a href="#buyer"><em>buyer</em></a>'s thrall
+        The insurer lives in the <a href="#buyer"><em>buyer</em></a>'s thrall,
         <br>
-        knows looping time ensnares them
+        knows looping time ensnares them.
         <br>
-        Claims connection to the <a href="#weatherman"><em>weatherman</em></a>
+        Claims connection to the <a href="#weatherman"><em>weatherman</em></a>,
         <br>
         &amp; hopes trickery will buy freedom
       {% endset %}
 
       {% set weathermanCopy %}
-        The weatherman, cruel to groundhog, <a href="#watcher"><em>watcher</em></a>, <a href="#insurer"><em>insurer</em></a>
+        The weatherman, cruel to ’hog, <a href="#watcher"><em>watch’</em></a>, and <a href="#insurer"><em>insurer</em></a>,
         <br>
-        to all he does not desire
+        to all he does not desire.
         <br>
-        Convinced his lot's unfair but deserves
+        Convinced his lot's unfair but deserves:
         <br>
-        the eternal torment of the <a href="#buyer"><em>buyer</em></a>
+        eternal torment of the <a href="#buyer"><em>buyer</em></a>
       {% endset %}
 
       {% set buyerCopy %}
-        The buyer traps a blameless town, <a href="#insurer"><em>insurer</em></a> forced
+        The buyer traps a blameless town, <a href="#insurer"><em>insurer</em></a> forced:
         <br>
-        To find her new toys, <a href="#watcher"><em>watcher</em></a> forced
+        To find her new toys, <a href="#watcher"><em>watcher</em></a> forced:
         <br>
-        To never understand, <a href="#weatherman"><em>weatherman</em></a> falling
+        To never understand, <a href="#weatherman"><em>weatherman</em></a> falling:
         <br>
         Right into her hands
       {% endset %}
@@ -143,7 +157,7 @@
           heading: "Buyer",
           id: "buyer",
           imageFilename: "death-and-the-dancer--crop.jpg",
-        })}}
+        }) }}
 
         {{ Card({
           alt: "Mid-20th century black and white clipart drawing of a smiling man protecting himself from rain with an umbrella on which is written “Insurance”.",
@@ -151,7 +165,7 @@
           heading: "Insurer",
           id: "insurer",
           imageFilename: "insurance-umbrella.jpg",
-        })}}
+        }) }}
 
         {{ Card({
           alt: "Black-and-white illustration in an airbrush style of a woman in US Airforce uniform operating a late 20th century film camera. She is wearing a hat which reads “AAVS”.",
@@ -159,7 +173,7 @@
           heading: "Watcher",
           id: "watcher",
           imageFilename: "camera-operator.jpg",
-        })}}
+        }) }}
 
         {{ Card({
           alt: "Photo of a magazine page showing the first TV anchorman.",
@@ -167,32 +181,110 @@
           heading: "Weatherman",
           id: "weatherman",
           imageFilename: "bendix-weatherman.jpg",
-        })}}
+        }) }}
 
         {# {% include '_broccoltoe.html.twig' %} #}
       </div>
+    </section>
+
+    <section>
+      {{ Header({
+        copy: "Huh.",
+        id: "what",
+      }) }}
+
+      {% set taleCopy %}
+        <p>The movie <em>Groundhog Day</em> is a modern setting of the timeless archetypes described above. Remember from you childhood books, plays, lullabies? These are where the tarot comes from.</p>
+        
+        <p>It tells of a woman (Rita Hanson in the movie), the Buyer, who learns a secret of freezing time.</p>
+        
+        <p>One day in her travels she decided to freeze time for everyone who enters and does not leave the town she's in. She explains the situation to one person, the Insurer (Ned Ryerson), and engages them to bring more people into the orbit of her power.</p>
+        
+        <p>A visiting quack who claims to be a seer, the Weatherman (Phil Connors), is drawn to town by an almost magnetic force (Punxsutawney Phil), intending to move on quickly. The Insurer, seeing a chance to ingratiate with the Buyer, tells the Weatherman that they are old friends, as a trick to make him stay the night.</p>
+        
+        <p>Perhaps most mysterious of all is the Watcher (Larry). They follow the Weatherman in his travels, who is never kind to them. The Watcher becomes friendly with the Buyer; what does the Watcher see and know?</p>
+      {% endset %}
+
+      {{ Card({
+        copy: taleCopy,
+      }) }}
+    </section>
+
+    <section>
+      {{ Header({
+        copy: "What’s the date?",
+        id: "when",
+      }) }}
+
+      {{ Card({
+        copy: "February 2nd, Groundhog Day, every day.",
+      }) }}
+    </section>
+
+    <section>
+      {{ Header({
+        copy: "Where?",
+        id: "where",
+      }) }}
+
+      {{ Card({
+        copy: "Where you are.",
+      }) }}
+    </section>
+
+    <section>
+      {{ Header({
+        copy: "Why?",
+        id: "why",
+      }) }}
+
+      {% set whyCopy %}
+        <p>All the holidays have their set traditions. Some traditions are valuable, in connecting us to the past and the future. Some connect us to the past and future but maybe not in valuable ways — in some places, some of the big-name holidays have been thoroughly coopted by Big Sugar and Big Retail, who tell us "your favorite tradition is to buy and eat junk".</p>
+        
+        <p>And some of the more superficial traditions (as opposed to those rooted in caring for land and/or community, perpetuating knowledge and wisdom, etc) were started by <em>someone</em>. Christmas trees as they're known in the United States (where your correspondant writes from) trace back to a handful of royals in the mid-18th century, and especially Queen Charlotte, whose daughter Victoria kept the tradition going, and whose popularity in turn encouraged its spread.</p>
+        
+        <p>How cool to be a source of holiday traditions, starting closer from scratch than "part of this holiday is giving gifts, and in my family starting with my kids we'll do present opening such-and-such a way"!</p>
+
+        <p>But the relatively few holidays recognized by name (at least here in the U.S.) have their traditions set. Except for Groundhog Day! It's free for the claiming!</p>
+      {% endset %}
+
+      {{ Card({
+        copy: whyCopy,
+      }) }}
+    </section>
+
+
+    <section>
+      {{ Header({
+        copy: "That sounds fun",
+        id: "how",
+      }) }}
+
+      {% set howCopy %}
+        Throw a Groundhog Day party! Invent some traditions, and pretend they're what you grew up with, invent their histories and how the connect to the earliest Spring (or Fall, you matter to us Southern Hemisphere) celebrations. Invite your friends, and tell them to arrive ready to share <em>their</em> families' "traditional" traditions.
+      {% endset %}
+
+      {{ Card({
+        copy: howCopy,
+      }) }}
     </section>
   </main>
 
   <footer class="bg-white/70 lg:p-20 md:p-15 mt-60 p-10 text-lg">
     <section>
       <h2 class="mb-2 underline">Image sources</h2>
-      <p>
-        Death points an arrow at a female dancer. Aquatint by J. Gleadah, 1822. Wellcome Collection. <a href="https://creativecommons.org/publicdomain/mark/1.0">Public Domain Mark</a>. Source: <a href="https://www.lookandlearn.com/history-images/YW042204VEL/Death-points-an-arrow-at-a-female-dancer">Wellcome Collection</a>.
 
-        <br>
-        
-        1957 ... weather central!</a>. <a href="https://creativecommons.org/licenses/by-nc-sa/2.0/">CC BY-NC-SA 2.0</a> license. Source: <a href="https://www.flickr.com/photos/x-ray_delta_one/5206149142">flickr</a>.
+      <ul class="list-disc list-inside">
+        <li>Death points an arrow at a female dancer. Aquatint by J. Gleadah, 1822. Wellcome Collection. <a href="https://creativecommons.org/publicdomain/mark/1.0">Public Domain Mark</a>. Source: <a href="https://www.lookandlearn.com/history-images/YW042204VEL/Death-points-an-arrow-at-a-female-dancer">Wellcome Collection</a>.</li>
 
-        <br>
+        <li>1957 ... weather central!</a>. <a href="https://creativecommons.org/licenses/by-nc-sa/2.0/">CC BY-NC-SA 2.0</a> license. Source: <a href="https://www.flickr.com/photos/x-ray_delta_one/5206149142">flickr</a>.</li>
 
-        Audio Visual Service. Lilly, Denise. <a href="https://nara.getarchive.net/media/artwork-audio-visual-service-artist-denise-lilly-d45092">Source: NARA &amp; DVIDS Public Domain Archive.</a>. Public Domain.
+        <li>Audio Visual Service. Lilly, Denise. <a href="https://nara.getarchive.net/media/artwork-audio-visual-service-artist-denise-lilly-d45092">Source: NARA &amp; DVIDS Public Domain Archive.</a>. Public Domain.</li>
 
-        <br>
-        "Comic insurance company logo vector illustration". Public Domain. Source: <a href="https://freesvg.org/comic-insurance-company-logo-vector-illustration">Free SVG</a>.
-      </p>
+        <li>"Comic insurance company logo vector illustration". Public Domain. Source: <a href="https://freesvg.org/comic-insurance-company-logo-vector-illustration">Free SVG</a>.</li>
+      </up>
     </section>
 
-    <p class="mt-10">&copy; 2022-present Henry Bley-Vroman</p>
+    <p class="mt-10">&copy; Henry Bley-Vroman</p>
   </footer>
 </body>

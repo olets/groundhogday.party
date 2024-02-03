@@ -9,37 +9,47 @@
 
   {% from "_Image.html.twig" import Image %}
 
-  <article class="border border-black/70 part grid md:grid-cols-2" id="{{ props.id }}">
-    {{ Image({
-      alt: props.alt,
-      classes: "md:hidden rounded-t-lg w-full",
-      filename: props.imageFilename,
-      imgixConfig: {
-        ar: "16:9",
-        crop: "faces",
-        "fill-color": "white",
-        fit: "crop",
-      },
-    })}}
+  <article
+    class="border border-black/70 part {% if props.imageFilename %}grid md:grid-cols-2{% endif %}"
 
-    {{ Image({
-      alt: props.alt,
-      classes: "hidden md:block rounded-l-lg w-full",
-      filename: props.imageFilename,
-      imgixConfig: {
-        ar: "8:10",
-        crop: "faces",
-        "fill-color": "white",
-        fit: "crop",
-      },
-    })}}
+    {% if props.id %}
+      id="{{ props.id }}"
+    {% endif %}
+  >
+    {% if props.imageFilename %}
+      {{ Image({
+        alt: props.alt,
+        classes: "md:hidden rounded-t-lg w-full",
+        filename: props.imageFilename,
+        imgixConfig: {
+          ar: "16:9",
+          crop: "faces",
+          "fill-color": "white",
+          fit: "crop",
+        },
+      }) }}
+
+      {{ Image({
+        alt: props.alt,
+        classes: "hidden md:block rounded-l-lg w-full",
+        filename: props.imageFilename,
+        imgixConfig: {
+          ar: "8:10",
+          crop: "faces",
+          "fill-color": "white",
+          fit: "crop",
+        },
+      }) }}
+    {% endif %}
 
     <div class="md:p-10 p-5">
-      <h2 class="mb-2 text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
-        <em>{{ props.heading }}</em>
-      </h2>
+      {% if props.heading %}
+        <h2 class="mb-2 text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
+          <em>{{ props.heading }}</em>
+        </h2>
+      {% endif %}
 
-      <p class="text-xl md:text-2xl lg:text-3xl xl:text-4xl">{{ props.copy }}</p>
+      <div class="space-y-5 text-xl md:text-2xl lg:text-3xl xl:text-4xl">{{ props.copy }}</div>
     </div>
   </article>
 {% endmacro %}

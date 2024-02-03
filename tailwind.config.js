@@ -11,6 +11,9 @@ module.exports = {
       backgroundImage: {
         'groundhog': "url('https://olets.github.io/assets/images/groundhogs-facing.jpg')",
       },
+      dropShadow: {
+        'heading': '0 0 10px white',
+      },
       fontFamily: {
         sans: [
             'UnifrakturCook',

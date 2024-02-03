@@ -1,9 +1,13 @@
 {% macro Header(props = {}) %}
   {% set props = {
     copy: null,
+    id: null,
   }|merge(props) %}
 
-  <h2 class="mt-8 mb-4 text-center lg:text-6xl md:text-5xl sm:text-4xl text-2xl">
+  <h2
+    class="mt-8 mb-4 text-center lg:text-6xl md:text-5xl sm:text-4xl text-2xl drop-shadow-heading [text-shadow:0_0_5px_white]"
+    id="{{ props.id ?? props.copy|lower|url_encode }}"
+  >
     {{ props.copy }}
   </h2>
 {% endmacro %}

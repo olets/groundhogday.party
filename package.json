@@ -16,11 +16,12 @@
     "tailwindcss": "^3.2.4"
   },
   "scripts": {
-    "build": "pnpm clean && pnpm gulp build && pnpm build:fonts",
+    "build": "pnpm clean && pnpm gulp build && pnpm copy-fonts",
     "build:fonts": "pnpm build:fonts:modak && pnpm build:fonts:unifraktur",
     "build:fonts:modak": "pnpm glyphhanger dist/*.html --subset=src/fonts/Modak-Regular.woff2 --formats=woff2 --output=dist --cssSelector=em",
     "build:fonts:unifraktur": "pnpm glyphhanger dist/*.html --subset=src/fonts/UnifrakturCook-Bold.woff2 --formats=woff2 --output=dist",
     "clean": "pnpm gulp clean",
+    "copy-fonts": "cp src/fonts/Modak-Regular.woff2 dist/Modak-Regular.woff2 && cp src/fonts/UnifrakturCook-Bold.woff2 dist/UnifrakturCook-Bold.woff2",
     "dev": "pnpm clean && pnpm dev:fonts && pnpm gulp dev",
     "dev:fonts": "pnpm dev:fonts:modak && pnpm dev:fonts:unifraktur",
     "dev:fonts:modak": "cp src/fonts/Modak-Regular.woff2 dist/Modak-Regular-subset.woff2",
